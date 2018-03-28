@@ -1,12 +1,7 @@
-﻿Build started 21/03/2018 13:04:01.
+﻿Build started 28/03/2018 15:36:51.
      1>Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Parser.cpp dog.cpp interpreter.cpp
-         interpreter.cpp
-     1>d:\code\c++\dog\dog\dog\interpreter.cpp(9): warning C4018: '<' : signed/unsigned mismatch
-         Parser.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt dog.cpp
          dog.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Code\C++\dog\dog\Debug\dog.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Code\C++\dog\dog\Debug\dog.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Code\C++\dog\dog\Debug\dog.lib" /MACHINE:X86 Debug\DebugFunctions.obj
@@ -20,4 +15,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.04
+Time Elapsed 00:00:01.24

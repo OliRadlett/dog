@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	else
 	{
 		std::cout << "No file specified, defaulting to built in test file" << std::endl;
-		lines = "OUT Ben is slow;";
+		lines = "OUT Test string;OUT Another Test String;";
 	}
 
 	interpreter interpreter_(lines);

@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Ugh, it breaks git all the time...
+*.opensdf
