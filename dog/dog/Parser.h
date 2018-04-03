@@ -12,7 +12,6 @@ public:
 	Parser();
 	~Parser();
 	std::vector<std::string>Parse(std::string fileString);
-
-private:
-	std::vector<std::string> SplitFile(std::string fileString);
+	std::vector<int>parseInts(std::string ints);
+	std::vector<std::string> Split(std::string _lines, const char* delimiter);
 };

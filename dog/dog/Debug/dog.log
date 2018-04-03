@@ -1,18 +1,24 @@
-﻿Build started 28/03/2018 15:36:51.
+﻿Build started 03/04/2018 07:29:22.
      1>Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt dog.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt add.cpp dog.cpp interpreter.cpp Parser.cpp
+         Parser.cpp
+         interpreter.cpp
+     1>d:\code\c++\dog\dog\dog\add.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>d:\code\c++\dog\dog\dog\interpreter.cpp(9): warning C4018: '<' : signed/unsigned mismatch
+     1>d:\code\c++\dog\dog\dog\interpreter.cpp(36): error C2653: 'parser' : is not a class or namespace name
+     1>d:\code\c++\dog\dog\dog\interpreter.cpp(36): error C3861: 'parseInts': identifier not found
+         add.cpp
+     1>d:\code\c++\dog\dog\dog\add.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+     1>d:\code\c++\dog\dog\dog\add.cpp(7): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+     1>d:\code\c++\dog\dog\dog\parser.cpp(39): error C4716: 'Parser::parseInts' : must return a value
+         Compiling...
          dog.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Code\C++\dog\dog\Debug\dog.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Code\C++\dog\dog\Debug\dog.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Code\C++\dog\dog\Debug\dog.lib" /MACHINE:X86 Debug\DebugFunctions.obj
-         Debug\dog.obj
-         Debug\interpreter.obj
-         Debug\out.obj
-         Debug\Parser.obj
-         Debug\stdafx.obj
-         dog.vcxproj -> D:\Code\C++\dog\dog\Debug\dog.exe
-     1>Done Building Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" (Build target(s)).
+     1>d:\code\c++\dog\dog\dog\add.h(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+         Generating Code...
+     1>Done Building Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.24
+Time Elapsed 00:00:03.31

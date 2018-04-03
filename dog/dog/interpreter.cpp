@@ -14,15 +14,26 @@ interpreter::interpreter(std::string fileString)
 
 		if (command == "OUT")
 		{
-			// Anything following the OUT command is outputted
-			std::string toOutput = line.substr(4);
-			out::out(toOutput);
+			interpreter::out(line);
 		}
 		else if (command == "ADD")
 		{
-
+			interpreter::add(line);
 		}
 	}
+}
+
+void interpreter::out(std::string line)
+{
+	// Anything following the OUT command is outputted
+	std::string toOutput = line.substr(4);
+	out::out(toOutput);
+}
+
+void interpreter::add(std::string line) {
+	// Anything after ADD is to be added
+	std::string numbers = line.substr(4);
+	parser::parseInts(numbers);
 }
 
 

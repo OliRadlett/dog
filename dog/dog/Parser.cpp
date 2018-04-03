@@ -7,31 +7,41 @@ Parser::Parser()
 
 std::vector<std::string>Parser::Parse(std::string fileString)
 {
-	std::vector < std::string> lines = SplitFile(fileString);
+	std::vector < std::string> lines = Split(fileString, ";");
 	return lines;
 }
 
-std::vector<std::string> Parser::SplitFile(std::string fileString)
+std::vector<std::string> Parser::Split(std::string _lines, const char* delimiter)
 {
-	//std::string testString = "ADD 1 2; SUB 2 1;                MUL 2 3;OUT 5;";
+	// Split series of values by delimiter
 	std::vector<std::string> lines;
 
 	size_t pos = 0;
 	std::string token;
 
-	while ((pos = fileString.find(";")) != std::string::npos)
+	while ((pos = _lines.find(delimiter)) != std::string::npos)
 	{
-		token = fileString.substr(0, pos);
+		token = _lines.substr(0, pos);
 		lines.push_back(token);
-		fileString.erase(0, pos + 1);
+		_lines.erase(0, pos + 1);
 		
-		while (fileString[0] == ' ')
+		while (_lines[0] == ' ')
 		{
-			fileString.erase(0, 1);
+			_lines.erase(0, 1);
 		}
 	}
 
 	return lines;
+}
+
+std::vector<int> Parser::parseInts(std::string ints)
+{
+	std::vector<std::string> intsStr = Split(ints, " ");
+	std::vector<int> ints;
+	for (std::string int_ : intsStr)
+	{
+		int number = int_;
+	}
 }
 
 Parser::~Parser()

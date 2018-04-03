@@ -81,6 +81,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="add.h" />
     <ClInclude Include="DebugFunctions.h" />
     <ClInclude Include="interpreter.h" />
     <ClInclude Include="out.h" />
@@ -89,6 +90,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="add.cpp" />
     <ClCompile Include="DebugFunctions.cpp" />
     <ClCompile Include="dog.cpp" />
     <ClCompile Include="interpreter.cpp" />
