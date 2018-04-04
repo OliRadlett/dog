@@ -1,3 +1,3 @@
 # dog
 one day dog will be an acronym
-6th form EPQ project - make an interpreted programming language
+6th form EPQ project - Can I make an interpreted programming language?
