@@ -7,12 +7,13 @@ Parser::Parser()
 
 std::vector<std::string>Parser::Parse(std::string fileString)
 {
-	std::vector < std::string> lines = Split(fileString, ";");
+	std::vector < std::string> lines = Split(fileString, ";", false);
 	return lines;
 }
 
-std::vector<std::string> Parser::Split(std::string _lines, const char* delimiter)
+std::vector<std::string> Parser::Split(std::string _lines, const char* delimiter, bool includeLast)
 {
+	// Add a boolean parameter for getting the last part of line if there is no delimiter i.e. the last number in the add command that isn't followed by a space
 	// Split series of values by delimiter
 	std::vector<std::string> lines;
 
@@ -31,17 +32,27 @@ std::vector<std::string> Parser::Split(std::string _lines, const char* delimiter
 		}
 	}
 
+	if (includeLast)
+	{
+		lines.push_back(_lines);
+	}
+
 	return lines;
 }
 
 std::vector<int> Parser::parseInts(std::string ints)
 {
-	std::vector<std::string> intsStr = Split(ints, " ");
-	std::vector<int> ints;
+	// Var names in this method make no sense.
+	std::vector<std::string> intsStr = Split(ints, " ", true);
+	DebugFunctions dbf;
+	//dbf.OutputVector(intsStr);
+	std::vector<int> numbers;
 	for (std::string int_ : intsStr)
 	{
-		int number = int_;
+		int number = std::stoi(int_);
+		numbers.push_back(number);
 	}
+	return numbers;
 }
 
 Parser::~Parser()

@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	else
 	{
 		std::cout << "No file specified, defaulting to built in test file" << std::endl;
-		lines = "OUT Test string;OUT Another Test String;";
+		lines = "OUT Test string;OUT Another Test String;ADD 1 2 3 4 5;SUB 5 4 3 2 1; MUL 2 2; DIV 10 2; SIN 90; COS 90; TAN 1; SI_ 1; CO_ 0.5; TA_ 1;";
 	}
 
 	interpreter interpreter_(lines);

@@ -13,5 +13,5 @@ public:
 	~Parser();
 	std::vector<std::string>Parse(std::string fileString);
 	std::vector<int>parseInts(std::string ints);
-	std::vector<std::string> Split(std::string _lines, const char* delimiter);
+	std::vector<std::string> Split(std::string _lines, const char* delimiter, bool includeLast);
 };
