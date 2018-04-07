@@ -25,8 +25,11 @@ std::vector<std::string> Parser::Split(std::string _lines, const char* delimiter
 		token = _lines.substr(0, pos);
 		lines.push_back(token);
 		_lines.erase(0, pos + 1);
-		
 		while (_lines[0] == ' ')
+		{
+			_lines.erase(0, 1);
+		}
+		while (_lines[0] == '\n')
 		{
 			_lines.erase(0, 1);
 		}

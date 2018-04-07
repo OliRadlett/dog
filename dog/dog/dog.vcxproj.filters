@@ -36,9 +36,6 @@
     <ClInclude Include="interpreter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="add.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="maths.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,11 +59,13 @@
     <ClCompile Include="interpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="add.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="maths.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.dog">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
