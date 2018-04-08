@@ -1,4 +1,4 @@
-﻿Build started 07/04/2018 18:14:57.
+﻿Build started 07/04/2018 23:04:33.
      1>Project "C:\Users\Oli\Desktop\dog\dog\dog\dog.vcxproj" on node 2 (Build target(s)).
      1>Link:
          dog.vcxproj -> C:\Users\Oli\Desktop\dog\dog\Debug\dog.exe
@@ -6,4 +6,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.06
+Time Elapsed 00:00:00.54
