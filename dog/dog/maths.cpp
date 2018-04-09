@@ -1,22 +1,23 @@
 #include "maths.h"
+#include "stdafx.h"
 
-#define PI 3.14159265
+#define PI 3.14159265358979323846
 
 maths::maths()
 {
 }
 
-void maths::add(std::vector<int> numbers)
+int maths::add(std::vector<int> numbers)
 {
 	int total = 0;
 	for (int i : numbers)
 	{
 		total += i;
 	}
-	std::cout << total << std::endl;
+	return total;
 }
 
-void maths::sub(std::vector<int> numbers)
+int maths::sub(std::vector<int> numbers)
 {
 	int total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
@@ -26,10 +27,10 @@ void maths::sub(std::vector<int> numbers)
 			total = total - numbers[i];
 		}
 	}
-	std::cout << total << std::endl;
+	return total;
 }
 
-void maths::mul(std::vector<int> numbers)
+int maths::mul(std::vector<int> numbers)
 {
 	int total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
@@ -39,10 +40,10 @@ void maths::mul(std::vector<int> numbers)
 			total = total * numbers[i];
 		}
 	}
-	std::cout << total << std::endl;
+	return total;
 }
 
-void maths::div(std::vector<int> numbers)
+int maths::div(std::vector<int> numbers)
 {
 	int total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
@@ -52,43 +53,43 @@ void maths::div(std::vector<int> numbers)
 			total = total / numbers[i];
 		}
 	}
-	std::cout << total << std::endl;
+	return total;
 }
 
-void maths::_sin(int number)
+int maths::_sin(int number)
 {
 	int result = sin(number * PI / 180);
-	std::cout << result << std::endl;
+	return result;
 }
 
-void maths::_cos(int number)
+int maths::_cos(int number)
 {
 	int result = cos(number * PI / 180);
-	std::cout << result << std::endl;
+	return result;
 }
 
-void maths::_tan(int number)
+int maths::_tan(int number)
 {
 	int result = tan(number * PI / 180);
-	std::cout << result << std::endl;
+	return result;
 }
 
-void maths::si_(int number)
+int maths::si_(int number)
 {
 	float result = asin(number) * 180 / PI;
-	std::cout << result << std::endl;
+	return result;
 }
 
-void maths::co_(int number)
+int maths::co_(int number)
 {
 	float result = acos(number) * 180 / PI;
-	std::cout << result << std::endl;
+	return result;
 }
 
-void maths::ta_(int number)
+int maths::ta_(int number)
 {
 	float result = atan(number) * 180 / PI;
-	std::cout << result << std::endl;
+	return result;
 }
 
 // sin cos and tan might need to be changed to return floats for higher accuracy
