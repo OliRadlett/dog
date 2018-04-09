@@ -58,6 +58,21 @@ std::vector<int> Parser::parseInts(std::string ints)
 	return numbers;
 }
 
+std::vector<double> Parser::parseDoubles(std::string doubles)
+{
+	// Var names in this method make no sense.
+	std::vector<std::string> doublesStr = Split(doubles, " ", true);
+	DebugFunctions dbf;
+	//dbf.OutputVector(intsStr);
+	std::vector<double> numbers;
+	for (std::string double_ : doublesStr)
+	{
+		double number = std::stod(double_);
+		numbers.push_back(number);
+	}
+	return numbers;
+}
+
 Parser::~Parser()
 {
 }

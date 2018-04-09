@@ -9,75 +9,89 @@ namespace UnitTests
 	public:
 		TEST_METHOD(AddInts)
 		{
-			int x = 3;
-			int y = 2;
-			int z = 1;
-			int expected = 6;
-			std::vector<int> numbers = { x, y, z };
-			int result = maths::add(numbers);
+			double x = 3;
+			double y = 2;
+			double z = 1;
+			double expected = 6;
+			std::vector<double> numbers = { x, y, z };
+			double result = maths::add(numbers);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(AddDoubles)
+		{
+			double x = 3.5;
+			double y = 2.1;
+			double z = 1.9;
+			double expected = 7.5;
+			std::vector<double> numbers = { x, y, z };
+			double result = maths::add(numbers);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(SubInts)
 		{
-			int x = 3;
-			int y = 2;
-			int z = 1;
-			int expected = 0;
-			std::vector<int> numbers = { x, y, z };
-			int result = maths::sub(numbers);
+			double x = 3;
+			double y = 2;
+			double z = 1;
+			double expected = 0;
+			std::vector<double> numbers = { x, y, z };
+			double result = maths::sub(numbers);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(MulInts)
 		{
-			int x = 3;
-			int y = 5;
-			int expected = 15;
-			std::vector<int> numbers = { x, y };
-			int result = maths::mul(numbers);
+			double x = 3;
+			double y = 5;
+			double expected = 15;
+			std::vector<double> numbers = { x, y };
+			double result = maths::mul(numbers);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(DivInts)
 		{
-			int x = 10;
-			int y = 2;
-			int expected = 5;
-			std::vector<int> numbers = { x, y };
-			int result = maths::div(numbers);
+			double x = 10;
+			double y = 2;
+			double expected = 5;
+			std::vector<double> numbers = { x, y };
+			double result = maths::div(numbers);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(SinInt)
 		{
-			int x = 90;
-			int expected = 1;
-			int result = maths::_sin(x);
+			double x = 90;
+			double expected = 1;
+			double result = maths::_sin(x);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(CosInt)
 		{
-			int x = 180;
-			int expected = -1;
-			int result = maths::_cos(x);
+			double x = 180;
+			double expected = -1;
+			double result = maths::_cos(x);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(TanInt)
 		{
-			int x = 45;
-			int expected = 1;
-			int result = maths::_tan(x);
+			double x = 45;
+			double expected = 1;
+			double result = maths::_tan(x);
+			std::ostringstream strs;
+			strs << result;
+			std::string resultStr = strs.str();
+			Logger::WriteMessage(resultStr);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(DegToRadInt)
 		{
-			float x = 180;
-			float expected = PI;
-			float result = maths::DegToRad(x);
+			double x = 180;
+			double expected = PI;
+			double result = maths::DegToRad(x);
 			Assert::AreEqual(expected, result);
 		}
-		TEST_METHOD(RadToDegFloat)
+		TEST_METHOD(RadToDegDouble)
 		{
-			float x = PI;
-			float expected = 180;
-			float result = maths::RadToDeg(x);
+			double x = PI;
+			double expected = 180;
+			double result = maths::RadToDeg(x);
 			Assert::AreEqual(expected, result);
 		}
 	};

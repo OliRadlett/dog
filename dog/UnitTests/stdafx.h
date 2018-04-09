@@ -15,4 +15,6 @@
 #include "unittest1.h"
 #include "../dog/maths.h"
 #include <vector>
+#include <sstream>
+#include <string>
 #define PI 3.14159265358979323846

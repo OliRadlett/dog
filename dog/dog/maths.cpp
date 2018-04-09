@@ -7,19 +7,19 @@ maths::maths()
 {
 }
 
-int maths::add(std::vector<int> numbers)
+double maths::add(std::vector<double> numbers)
 {
-	int total = 0;
-	for (int i : numbers)
+	double total = 0;
+	for (double i : numbers)
 	{
 		total += i;
 	}
 	return total;
 }
 
-int maths::sub(std::vector<int> numbers)
+double maths::sub(std::vector<double> numbers)
 {
-	int total = numbers[0];
+	double total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
 	{
 		if (i != 0)
@@ -30,9 +30,9 @@ int maths::sub(std::vector<int> numbers)
 	return total;
 }
 
-int maths::mul(std::vector<int> numbers)
+double maths::mul(std::vector<double> numbers)
 {
-	int total = numbers[0];
+	double total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
 	{
 		if (i != 0)
@@ -43,9 +43,9 @@ int maths::mul(std::vector<int> numbers)
 	return total;
 }
 
-int maths::div(std::vector<int> numbers)
+double maths::div(std::vector<double> numbers)
 {
-	int total = numbers[0];
+	double total = numbers[0];
 	for (int i = 0; i < numbers.size(); i++)
 	{
 		if (i != 0)
@@ -56,48 +56,48 @@ int maths::div(std::vector<int> numbers)
 	return total;
 }
 
-int maths::_sin(int number)
+double maths::_sin(double number)
 {
-	int result = sin(maths::DegToRad(number));
+	double result = sin(maths::DegToRad(number));
 	return result;
 }
 
-int maths::_cos(int number)
+double maths::_cos(double number)
 {
-	int result = cos(maths::DegToRad(number));
+	double result = cos(maths::DegToRad(number));
 	return result;
 }
 
-int maths::_tan(int number)
+double maths::_tan(double number)
 {
-	int result = tan(maths::DegToRad(number));
+	double result = tan(maths::DegToRad(number));
 	return result;
 }
 
-int maths::si_(int number)
+double maths::si_(double number)
 {
-	float result = maths::RadToDeg(asin(number));
+	double result = maths::RadToDeg(asin(number));
 	return result;
 }
 
-int maths::co_(int number)
+double maths::co_(double number)
 {
-	float result = maths::RadToDeg(acos(number));
+	double result = maths::RadToDeg(acos(number));
 	return result;
 }
 
-int maths::ta_(int number)
+double maths::ta_(double number)
 {
-	float result = maths::RadToDeg(atan(number));
+	double result = maths::RadToDeg(atan(number));
 	return result;
 }
 
-float maths::DegToRad(float deg)
+double maths::DegToRad(double deg)
 {
 	return (deg * PI) / 180;
 }
 
-float maths::RadToDeg(float rad)
+double maths::RadToDeg(double rad)
 {
 	return (rad * 180) / PI;
 }

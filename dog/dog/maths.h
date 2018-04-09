@@ -14,28 +14,28 @@ public:
 	~maths();
 	// Aggghhhhhh!!!!
 	// FIX ALL THIS STATIC ACCESS!!!
-	// Also floats might be an idea
-	static int add(std::vector<int> numbers);
-	static int add(std::vector<std::string> vars);
-	static int sub(std::vector<int> numbers);
-	static int sub(std::vector<std::string> vars);
-	static int mul(std::vector<int> numbers);
-	static int mul(std::vector<std::string> vars);
-	static int div(std::vector<int> numbers);
-	static int div(std::vector<std::string> vars);
-	static int _sin(int number);
-	static int _sin(std::string string);
-	static int _cos(int number);
-	static int _cos(std::string string);
-	static int _tan(int number);
-	static int _tan(std::string string);
-	static int si_(int number);
-	static int si_(std::string string);
-	static int co_(int number);
-	static int co_(std::string string);
-	static int ta_(int number);
-	static int ta_(std::string string);
-	static float DegToRad(float deg);
-	static float RadToDeg(float rad);
+	// Also doubles might be an idea
+	static double add(std::vector<double> numbers);
+	static double add(std::vector<std::string> vars);
+	static double sub(std::vector<double> numbers);
+	static double sub(std::vector<std::string> vars);
+	static double mul(std::vector<double> numbers);
+	static double mul(std::vector<std::string> vars);
+	static double div(std::vector<double> numbers);
+	static double div(std::vector<std::string> vars);
+	static double _sin(double number);
+	static double _sin(std::string string);
+	static double _cos(double number);
+	static double _cos(std::string string);
+	static double _tan(double number);
+	static double _tan(std::string string);
+	static double si_(double number);
+	static double si_(std::string string);
+	static double co_(double number);
+	static double co_(std::string string);
+	static double ta_(double number);
+	static double ta_(std::string string);
+	static double DegToRad(double deg);
+	static double RadToDeg(double rad);
 };
 
