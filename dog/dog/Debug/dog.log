@@ -1,9 +1,0 @@
-﻿Build started 09/04/2018 14:03:37.
-     1>Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         dog.vcxproj -> D:\Code\C++\dog\dog\Debug\dog.exe
-     1>Done Building Project "D:\Code\C++\dog\dog\dog\dog.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.05
