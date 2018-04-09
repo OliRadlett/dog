@@ -66,5 +66,19 @@ namespace UnitTests
 			int result = maths::_tan(x);
 			Assert::AreEqual(expected, result);
 		}
+		TEST_METHOD(DegToRadInt)
+		{
+			float x = 180;
+			float expected = PI;
+			float result = maths::DegToRad(x);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(RadToDegFloat)
+		{
+			float x = PI;
+			float expected = 180;
+			float result = maths::RadToDeg(x);
+			Assert::AreEqual(expected, result);
+		}
 	};
 }

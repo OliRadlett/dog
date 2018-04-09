@@ -35,5 +35,7 @@ public:
 	static int co_(std::string string);
 	static int ta_(int number);
 	static int ta_(std::string string);
+	static float DegToRad(float deg);
+	static float RadToDeg(float rad);
 };
 

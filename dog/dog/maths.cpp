@@ -58,38 +58,48 @@ int maths::div(std::vector<int> numbers)
 
 int maths::_sin(int number)
 {
-	int result = sin(number * PI / 180);
+	int result = sin(maths::DegToRad(number));
 	return result;
 }
 
 int maths::_cos(int number)
 {
-	int result = cos(number * PI / 180);
+	int result = cos(maths::DegToRad(number));
 	return result;
 }
 
 int maths::_tan(int number)
 {
-	int result = tan(number * PI / 180);
+	int result = tan(maths::DegToRad(number));
 	return result;
 }
 
 int maths::si_(int number)
 {
-	float result = asin(number) * 180 / PI;
+	float result = maths::RadToDeg(asin(number));
 	return result;
 }
 
 int maths::co_(int number)
 {
-	float result = acos(number) * 180 / PI;
+	float result = maths::RadToDeg(acos(number));
 	return result;
 }
 
 int maths::ta_(int number)
 {
-	float result = atan(number) * 180 / PI;
+	float result = maths::RadToDeg(atan(number));
 	return result;
+}
+
+float maths::DegToRad(float deg)
+{
+	return (deg * PI) / 180;
+}
+
+float maths::RadToDeg(float rad)
+{
+	return (rad * 180) / PI;
 }
 
 // sin cos and tan might need to be changed to return floats for higher accuracy
