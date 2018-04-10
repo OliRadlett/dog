@@ -61,38 +61,38 @@ double maths::div(std::vector<double> numbers)
 
 double maths::_sin(double number)
 {
-	double result = round(sin(maths::DegToRad(number)));
+	double result = round(sin(maths::DegToRad(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
 double maths::_cos(double number)
 {
-	double result = round(cos(maths::DegToRad(number)));
+	double result = round(cos(maths::DegToRad(number)) * 1000.0) / 1000.0;
 	//if (result == )
 	return result;
 }
 
 double maths::_tan(double number)
 {
-	double result = round(tan(maths::DegToRad(number)));
+	double result = round(tan(maths::DegToRad(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
 double maths::si_(double number)
 {
-	double result = round(maths::RadToDeg(asin(number)));
+	double result = round(maths::RadToDeg(asin(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
 double maths::co_(double number)
 {
-	double result = round(maths::RadToDeg(acos(number)));
+	double result = round(maths::RadToDeg(acos(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
 double maths::ta_(double number)
 {
-	double result = round(maths::RadToDeg(atan(number)));
+	double result = round(maths::RadToDeg(atan(number)) * 1000.0) / 1000.0;
 	return result;
 }
 

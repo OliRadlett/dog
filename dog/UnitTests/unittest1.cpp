@@ -62,10 +62,24 @@ namespace UnitTests
 			double result = maths::_sin(x);
 			Assert::AreEqual(expected, result);
 		}
+		TEST_METHOD(SinDouble)
+		{
+			double x = 30.5;
+			double expected = 0.508;
+			double result = maths::_sin(x);
+			Assert::AreEqual(expected, result);
+		}
 		TEST_METHOD(CosInt)
 		{
 			double x = 180;
 			double expected = -1;
+			double result = maths::_cos(x);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(CosDouble)
+		{
+			double x = 30.5;
+			double expected = 0.862;
 			double result = maths::_cos(x);
 			Assert::AreEqual(expected, result);
 		}
@@ -74,10 +88,13 @@ namespace UnitTests
 			double x = 45;
 			double expected = 1;
 			double result = maths::_tan(x);
-			std::stringstream strs;
-			strs << result;
-			const char* resultStr = strs.str().c_str();
-			Logger::WriteMessage(resultStr);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(TanDouble)
+		{
+			double x = 60.5;
+			double expected = 1.767;
+			double result = maths::_tan(x);
 			Assert::AreEqual(expected, result);
 		}
 		TEST_METHOD(DegToRadInt)
