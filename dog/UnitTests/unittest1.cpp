@@ -74,9 +74,9 @@ namespace UnitTests
 			double x = 45;
 			double expected = 1;
 			double result = maths::_tan(x);
-			std::ostringstream strs;
+			std::stringstream strs;
 			strs << result;
-			std::string resultStr = strs.str();
+			const char* resultStr = strs.str().c_str();
 			Logger::WriteMessage(resultStr);
 			Assert::AreEqual(expected, result);
 		}

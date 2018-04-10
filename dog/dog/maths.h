@@ -4,8 +4,9 @@
 #include <iostream>
 #include "out.h"
 #include "DebugFunctions.h"
-#include <math.h>
-#define _USE_MATH_DEFINES
+#include <cmath>
+#include <iomanip> 
+#include <cstdlib>
 
 class maths
 {
@@ -37,5 +38,6 @@ public:
 	static double ta_(std::string string);
 	static double DegToRad(double deg);
 	static double RadToDeg(double rad);
+	static double round(double number);
 };
 

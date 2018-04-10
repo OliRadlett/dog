@@ -73,6 +73,21 @@ std::vector<double> Parser::parseDoubles(std::string doubles)
 	return numbers;
 }
 
+std::vector<float> Parser::parseFloats(std::string floats)
+{
+	// Var names in this method make no sense.
+	std::vector<std::string> floatsStr = Split(floats, " ", true);
+	DebugFunctions dbf;
+	//dbf.OutputVector(intsStr);
+	std::vector<float> numbers;
+	for (std::string float_ : floatsStr)
+	{
+		float number = std::stod(float_);
+		numbers.push_back(number);
+	}
+	return numbers;
+}
+
 Parser::~Parser()
 {
 }

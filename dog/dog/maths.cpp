@@ -1,8 +1,11 @@
 #include "maths.h"
 #include "stdafx.h"
 
-#define PI 3.14159265358979323846
+#define PI 3.14159265358979323846264338327950288
 
+// It's all going wrong because of floating-point precision
+// 0.0000000000000000000000000000000000000000000000000000001 != 0
+// Same with test case
 maths::maths()
 {
 }
@@ -58,51 +61,56 @@ double maths::div(std::vector<double> numbers)
 
 double maths::_sin(double number)
 {
-	double result = sin(maths::DegToRad(number));
+	double result = round(sin(maths::DegToRad(number)));
 	return result;
 }
 
 double maths::_cos(double number)
 {
-	double result = cos(maths::DegToRad(number));
+	double result = round(cos(maths::DegToRad(number)));
+	//if (result == )
 	return result;
 }
 
 double maths::_tan(double number)
 {
-	double result = tan(maths::DegToRad(number));
+	double result = round(tan(maths::DegToRad(number)));
 	return result;
 }
 
 double maths::si_(double number)
 {
-	double result = maths::RadToDeg(asin(number));
+	double result = round(maths::RadToDeg(asin(number)));
 	return result;
 }
 
 double maths::co_(double number)
 {
-	double result = maths::RadToDeg(acos(number));
+	double result = round(maths::RadToDeg(acos(number)));
 	return result;
 }
 
 double maths::ta_(double number)
 {
-	double result = maths::RadToDeg(atan(number));
+	double result = round(maths::RadToDeg(atan(number)));
 	return result;
 }
 
 double maths::DegToRad(double deg)
 {
-	return (deg * PI) / 180;
+	return (deg * PI / 180);
 }
 
 double maths::RadToDeg(double rad)
 {
-	return (rad * 180) / PI;
+	return (rad * 180 / PI);
 }
 
-// sin cos and tan might need to be changed to return floats for higher accuracy
+double maths::round(double val)
+{
+	if (val < 0) return ceil(val - 0.5);
+	return floor(val + 0.5);
+}
 
 maths::~maths()
 {
