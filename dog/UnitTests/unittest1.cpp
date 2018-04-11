@@ -97,6 +97,13 @@ namespace UnitTests
 			double result = maths::_tan(x);
 			Assert::AreEqual(expected, result);
 		}
+		TEST_METHOD(DegToRadDouble)
+		{
+			double x = 75.5;
+			double expected = 1.318;
+			double result = maths::round(maths::DegToRad(x) * 1000) / 1000;
+			Assert::AreEqual(expected, result);
+		}
 		TEST_METHOD(DegToRadInt)
 		{
 			double x = 180;
@@ -109,6 +116,13 @@ namespace UnitTests
 			double x = PI;
 			double expected = 180;
 			double result = maths::RadToDeg(x);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(RadToDegInt)
+		{
+			double x = 1;
+			double expected = 57.296;
+			double result = maths::round(maths::RadToDeg(x) * 1000) / 1000;
 			Assert::AreEqual(expected, result);
 		}
 	};
