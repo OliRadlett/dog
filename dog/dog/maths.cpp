@@ -98,7 +98,6 @@ double maths::ta_(double number)
 
 double maths::DegToRad(double deg)
 {
-	std::cout << (deg * PI / 180) << std::endl;
 	return (deg * PI / 180);
 }
 

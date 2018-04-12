@@ -5,6 +5,8 @@
 #include "Parser.h"
 #include "out.h"
 #include "maths.h"
+#include "vars.h"
+#include "set.h"
 
 class interpreter
 {
@@ -23,4 +25,7 @@ private:
 	void si_(std::string line);
 	void co_(std::string line);
 	void ta_(std::string line);
+	void str(std::string line, Parser parser);
+	void num(std::string line, Parser parser);
+	void boo(std::string line, Parser parser);
 };

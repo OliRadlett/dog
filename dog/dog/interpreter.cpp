@@ -56,6 +56,18 @@ interpreter::interpreter(std::string fileString)
 		{
 			interpreter::ta_(line);
 		}
+		else if (command == "STR")
+		{
+			interpreter::str(line);
+		}
+		else if (command == "NUM")
+		{
+			interpreter::num(line);
+		}
+		else if (command == "BOO")
+		{
+			interpreter::boo(line);
+		}
 	}
 }
 
@@ -145,6 +157,30 @@ void interpreter::ta_(std::string line)
 	double result = maths::ta_(std::stod(number));
 	out::out(result);
 }
+
+void interpreter::str(std::string line, Parser parser)
+{
+	// Parse line into name and value
+	std::vector<std::string> parsedLine = parser.Parse
+
+	//vars::InitString(string);
+}
+
+/*void interpreter::num(std::string line, Parser parser)
+{
+	// Anything after NUM is to be divided
+	std::string numbers = line.substr(4);
+	double result = maths::div(parser.parseDoubles(numbers));
+	out::out(result);
+}
+
+void interpreter::boo(std::string line, Parser parser)
+{
+	// Anything after BOO is to be divided
+	std::string numbers = line.substr(4);
+	double result = maths::div(parser.parseDoubles(numbers));
+	out::out(result);
+}*/
 
 interpreter::~interpreter()
 {

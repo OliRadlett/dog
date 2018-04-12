@@ -88,6 +88,11 @@ std::vector<float> Parser::parseFloats(std::string floats)
 	return numbers;
 }
 
+std::vector<std::string> Parser::ParseInitString(std::string line)
+{
+	std::vector<std::string> SplitLine = 
+}
+
 Parser::~Parser()
 {
 }
