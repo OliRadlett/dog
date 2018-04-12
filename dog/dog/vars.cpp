@@ -18,8 +18,11 @@ vars::~vars()
 
 void vars::InitString(std::string name, std::string value)
 {
-	stringNames.push_back(name);
-	stringValues.push_back(value);
+	if (exists(name))
+	{
+		stringNames.push_back(name);
+		stringValues.push_back(value);
+	}
 }
 
 void vars::InitDouble(std::string name, double value)
@@ -32,4 +35,21 @@ void vars::InitBoolean(std::string name, bool value)
 {
 	booleanNames.push_back(name);
 	booleanValues.push_back(value);
+}
+
+bool vars::exists(std::string name)
+{
+	if (std::find(stringNames.begin(), stringNames.end(), name) != stringNames.end())
+	{
+		return true;
+	}
+	if (std::find(doubleNames.begin(), doubleNames.end(), name) != doubleNames.end())
+	{
+		return true;
+	}
+	if (std::find(booleanNames.begin(), booleanNames.end(), name) != booleanNames.end())
+	{
+		return true;
+	}
+	return false;
 }

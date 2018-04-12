@@ -90,7 +90,19 @@ std::vector<float> Parser::parseFloats(std::string floats)
 
 std::vector<std::string> Parser::ParseInitString(std::string line)
 {
-	std::vector<std::string> SplitLine = 
+	std::vector<std::string> SplitLine = Split(line, " ", true);
+	std::string name = SplitLine[1];
+	std::string value;
+	for (int i = 2; i < SplitLine.size(); i++)
+	{
+		value.append(SplitLine[i]);
+		if (i != SplitLine.size() - 1)
+		{
+			value.append(" ");
+		}
+	}
+	std::vector < std::string> parsedStr = { name, value };
+	return parsedStr;
 }
 
 Parser::~Parser()

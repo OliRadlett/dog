@@ -58,16 +58,16 @@ interpreter::interpreter(std::string fileString)
 		}
 		else if (command == "STR")
 		{
-			interpreter::str(line);
+			interpreter::str(line, parser);
 		}
-		else if (command == "NUM")
+		/*else if (command == "NUM")
 		{
-			interpreter::num(line);
+			interpreter::num(line, parser);
 		}
 		else if (command == "BOO")
 		{
-			interpreter::boo(line);
-		}
+			interpreter::boo(line, parser);
+		}*/
 	}
 }
 
@@ -161,9 +161,8 @@ void interpreter::ta_(std::string line)
 void interpreter::str(std::string line, Parser parser)
 {
 	// Parse line into name and value
-	std::vector<std::string> parsedLine = parser.Parse
-
-	//vars::InitString(string);
+	std::vector<std::string> parsedLine = parser.ParseInitString(line);
+	vars::InitString(parsedLine[0], parsedLine[1]);
 }
 
 /*void interpreter::num(std::string line, Parser parser)
