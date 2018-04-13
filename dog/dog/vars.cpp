@@ -1,4 +1,5 @@
 #include "vars.h"
+#include "stdafx.h"
 
 std::vector<std::string> stringNames;
 std::vector<std::string> stringValues;
@@ -18,7 +19,7 @@ vars::~vars()
 
 void vars::InitString(std::string name, std::string value)
 {
-	if (exists(name))
+	if (!exists(name))
 	{
 		stringNames.push_back(name);
 		stringValues.push_back(value);
@@ -41,6 +42,7 @@ bool vars::exists(std::string name)
 {
 	if (std::find(stringNames.begin(), stringNames.end(), name) != stringNames.end())
 	{
+		std::cout << "Found string" << std::endl;
 		return true;
 	}
 	if (std::find(doubleNames.begin(), doubleNames.end(), name) != doubleNames.end())

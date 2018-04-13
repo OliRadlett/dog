@@ -11,9 +11,9 @@
 #include "CppUnitTest.h"
 
 // TODO: reference additional headers your program requires here
-#include "CppUnitTest.h"
 #include "unittest1.h"
 #include "../dog/maths.h"
+#include "../dog/vars.h"
 #include <vector>
 #include <sstream>
 #include <string>

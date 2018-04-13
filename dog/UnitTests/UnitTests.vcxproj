@@ -83,12 +83,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\dog\maths.h" />
+    <ClInclude Include="..\dog\vars.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="unittest1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dog\maths.cpp" />
+    <ClCompile Include="..\dog\vars.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

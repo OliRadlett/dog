@@ -125,5 +125,22 @@ namespace UnitTests
 			double result = maths::round(maths::RadToDeg(x) * 1000) / 1000;
 			Assert::AreEqual(expected, result);
 		}
+		TEST_METHOD(DuplicateStrExists)
+		{
+			std::string name = "testString";
+			bool expected = true;
+			vars::InitString(name, "testValue");
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete string after test to avoid confusion
+		}
+		TEST_METHOD(StrNotExists)
+		{
+			std::string name = "anotherTestString";
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete string after test to avoid confusion
+		}
 	};
 }
