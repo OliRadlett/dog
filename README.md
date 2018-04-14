@@ -3,4 +3,4 @@
 <br/>
 one day dog will be an acronym
 <br/>
-![logo](dog.jpg?raw=true "Logo")
+![logo](/logo.jpg?raw=true)
