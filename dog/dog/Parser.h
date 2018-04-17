@@ -17,4 +17,6 @@ public:
 	std::vector<float>parseFloats(std::string floats);
 	std::vector<std::string> Split(std::string _lines, const char* delimiter, bool includeLast);
 	std::vector<std::string> ParseInitString(std::string line);
+	std::vector<std::string> ParseInitDouble(std::string line);
+	std::vector<std::string> ParseInitBoolean(std::string line);
 };

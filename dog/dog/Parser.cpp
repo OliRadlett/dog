@@ -105,6 +105,26 @@ std::vector<std::string> Parser::ParseInitString(std::string line)
 	return parsedStr;
 }
 
+std::vector<std::string> Parser::ParseInitDouble(std::string line)
+{
+	std::vector<std::string> SplitLine = Split(line, " ", true);
+	std::string name = SplitLine[1];
+	std::string value = SplitLine[2];
+	std::vector < std::string> parsedStr = { name, value };
+	return parsedStr;
+}
+
+// Too tired to work if if these are two seperate functions doing similar things, or identical functions doing identical things
+
+std::vector<std::string> Parser::ParseInitBoolean(std::string line)
+{
+	std::vector<std::string> SplitLine = Split(line, " ", true);
+	std::string name = SplitLine[1];
+	std::string value = SplitLine[2];
+	std::vector < std::string> parsedStr = { name, value };
+	return parsedStr;
+}
+
 Parser::~Parser()
 {
 }

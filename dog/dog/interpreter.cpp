@@ -60,14 +60,14 @@ interpreter::interpreter(std::string fileString)
 		{
 			interpreter::str(line, parser);
 		}
-		/*else if (command == "NUM")
+		else if (command == "NUM")
 		{
 			interpreter::num(line, parser);
 		}
 		else if (command == "BOO")
 		{
 			interpreter::boo(line, parser);
-		}*/
+		}
 	}
 }
 
@@ -165,21 +165,23 @@ void interpreter::str(std::string line, Parser parser)
 	vars::InitString(parsedLine[0], parsedLine[1]);
 }
 
-/*void interpreter::num(std::string line, Parser parser)
+void interpreter::num(std::string line, Parser parser)
 {
-	// Anything after NUM is to be divided
-	std::string numbers = line.substr(4);
-	double result = maths::div(parser.parseDoubles(numbers));
-	out::out(result);
+	// Parse line into name and value
+	std::vector<std::string> parsedLine = parser.ParseInitDouble(line);
+	// Str to double to Str to double doesn't seem to good...
+	vars::InitDouble(parsedLine[0], std::stod(parsedLine[1]));
 }
 
 void interpreter::boo(std::string line, Parser parser)
 {
-	// Anything after BOO is to be divided
-	std::string numbers = line.substr(4);
-	double result = maths::div(parser.parseDoubles(numbers));
-	out::out(result);
-}*/
+	// Parse line into name and value
+	std::vector<std::string> parsedLine = parser.ParseInitBoolean(line);
+	// Str to bool to Str to bool doesn't seem to good...
+	bool value;
+	std::istringstream(parsedLine[1]) >> value;
+	vars::InitBoolean(parsedLine[0], value);
+}
 
 interpreter::~interpreter()
 {

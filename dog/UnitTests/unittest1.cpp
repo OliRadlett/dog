@@ -142,5 +142,39 @@ namespace UnitTests
 			Assert::AreEqual(expected, result);
 			// Possibly delete string after test to avoid confusion
 		}
+		TEST_METHOD(DuplicateNumExists)
+		{
+			std::string name = "testNumber";
+			bool expected = true;
+			vars::InitString(name, "testNumber");
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete number after test to avoid confusion
+		}
+		TEST_METHOD(NumNotExists)
+		{
+			std::string name = "anotherTestNumber";
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete number after test to avoid confusion
+		}
+		TEST_METHOD(DuplicateBoolExists)
+		{
+			std::string name = "testBoolean";
+			bool expected = true;
+			vars::InitBoolean(name, "testBoolean");
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete boolean after test to avoid confusion
+		}
+		TEST_METHOD(BoolNotExists)
+		{
+			std::string name = "anotherTestBoolean";
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+			// Possibly delete boolean after test to avoid confusion
+		}
 	};
 }
