@@ -9,10 +9,15 @@ interpreter::interpreter(std::string fileString)
 	for (int i = 0; i < lines.size(); i++)
 	{
 		std::string line = lines[i];
-		// Command is always first 3 characters of the line
-		std::string command = line.substr(0, 3);
+		std::vector<std::string> lineTokens = parser.Split(line, " ", true);
 
-		if (command == "OUT")
+		std::string command = lineTokens[0];
+
+		if (command == "//")
+		{
+			// Skip line
+		}
+		else if (command == "OUT")
 		{
 			interpreter::out(line);
 		}
@@ -67,6 +72,14 @@ interpreter::interpreter(std::string fileString)
 		else if (command == "BOO")
 		{
 			interpreter::boo(line, parser);
+		}
+		else if (command == "TEST")
+		{
+			std::cout << "4 character operand test" << std::endl;
+		}
+		else
+		{
+			std::cout << "'" << command << "' is not a recognised command" << std::endl;
 		}
 	}
 }

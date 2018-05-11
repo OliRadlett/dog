@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include "DebugFunctions.h"
 
 class vars
 {
@@ -21,7 +22,7 @@ public:
 	static std::string getString(std::string name);
 	static double getNumber(std::string name);
 	static bool getBoolean(std::string name);
-	static void remove(std::vector<std::string> vector, std::string value);
-	static void remove(std::vector<double> &vector, double value);
-	static void remove(std::vector<bool> &vector, bool value);
+	static std::vector<std::string> remove(std::vector<std::string> vector, std::string value);
+	static std::vector<double> remove(std::vector<double> vector, double value);
+	static std::vector<bool> remove(std::vector<bool> vector, bool value);
 };

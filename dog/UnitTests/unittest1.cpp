@@ -132,7 +132,7 @@ namespace UnitTests
 			vars::InitString(name, "testValue");
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete string after test to avoid confusion
+			vars::deleteVar(name);
 		}
 		TEST_METHOD(StrNotExists)
 		{
@@ -140,7 +140,7 @@ namespace UnitTests
 			bool expected = false;
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete string after test to avoid confusion
+			vars::deleteVar(name);
 		}
 		TEST_METHOD(DuplicateNumExists)
 		{
@@ -149,7 +149,7 @@ namespace UnitTests
 			vars::InitString(name, "testNumber");
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete number after test to avoid confusion
+			vars::deleteVar(name);
 		}
 		TEST_METHOD(NumNotExists)
 		{
@@ -157,7 +157,7 @@ namespace UnitTests
 			bool expected = false;
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete number after test to avoid confusion
+			vars::deleteVar(name);
 		}
 		TEST_METHOD(DuplicateBoolExists)
 		{
@@ -166,7 +166,7 @@ namespace UnitTests
 			vars::InitBoolean(name, "testBoolean");
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete boolean after test to avoid confusion
+			vars::deleteVar(name);
 		}
 		TEST_METHOD(BoolNotExists)
 		{
@@ -174,7 +174,37 @@ namespace UnitTests
 			bool expected = false;
 			bool result = vars::exists(name);
 			Assert::AreEqual(expected, result);
-			// Possibly delete boolean after test to avoid confusion
+			vars::deleteVar(name);
+		}
+		TEST_METHOD(DeleteStr)
+		{
+			std::string name = "deleteMe";
+			std::string value = "Test";
+			vars::InitString(name, value);
+			vars::deleteVar(name);
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(DeleteNum)
+		{
+			std::string name = "deleteMe";
+			double value = 12;
+			vars::InitDouble(name, value);
+			vars::deleteVar(name);
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
+		}
+		TEST_METHOD(DeleteBoo)
+		{
+			std::string name = "deleteMe";
+			bool value = true;
+			vars::InitBoolean(name, value);
+			vars::deleteVar(name);
+			bool expected = false;
+			bool result = vars::exists(name);
+			Assert::AreEqual(expected, result);
 		}
 	};
 }

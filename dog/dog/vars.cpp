@@ -7,6 +7,7 @@ std::vector<std::string> doubleNames;
 std::vector<double> doubleValues;
 std::vector<std::string> booleanNames;
 std::vector<bool> booleanValues;
+//DebugFunctions dbf;
 
 vars::vars()
 {
@@ -61,6 +62,10 @@ bool vars::findStr(std::string name)
 	{
 		return true;
 	}
+	else
+	{
+		return false;
+	}
 }
 
 bool vars::findNum(std::string name)
@@ -68,6 +73,10 @@ bool vars::findNum(std::string name)
 	if (std::find(doubleNames.begin(), doubleNames.end(), name) != doubleNames.end())
 	{
 		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
@@ -77,21 +86,28 @@ bool vars::findBoo(std::string name)
 	{
 		return true;
 	}
+	else
+	{
+		return false;
+	}
 }
 
-void vars::remove(std::vector<std::string> vector, std::string value)
+std::vector<std::string> vars::remove(std::vector<std::string> vector, std::string value)
 {
 	vector.erase(std::remove(vector.begin(), vector.end(), value), vector.end());
+	return vector;
 }
 
-void vars::remove(std::vector<double> &vector, double value)
+std::vector<double> vars::remove(std::vector<double> vector, double value)
 {
 	vector.erase(std::remove(vector.begin(), vector.end(), value), vector.end());
+	return vector;
 }
 
-void vars::remove(std::vector<bool> &vector, bool value)
+std::vector<bool> vars::remove(std::vector<bool> vector, bool value)
 {
 	vector.erase(std::remove(vector.begin(), vector.end(), value), vector.end());
+	return vector;
 }
 
 std::string vars::getString(std::string name)
@@ -134,20 +150,21 @@ void vars::deleteVar(std::string name)
 {
 	if (exists(name))
 	{
+
 		if (findStr(name))
 		{
-			vars::remove(stringNames, name);
-			vars::remove(stringValues, vars::getString(name));
+			stringValues = vars::remove(stringValues, vars::getString(name));
+			stringNames = vars::remove(stringNames, name);
 		}
-		if (findNum(name))
+		else if (findNum(name))
 		{
-			vars::remove(doubleNames, name);
-			vars::remove(doubleValues, vars::getNumber(name));
+			doubleValues = vars::remove(doubleValues, vars::getNumber(name));
+			doubleNames = vars::remove(doubleNames, name);
 		}
-		if (findBoo(name))
+		else if (findBoo(name))
 		{
-			vars::remove(booleanNames, name);
-			vars::remove(booleanValues, vars::getBoolean(name));
+			booleanValues = vars::remove(booleanValues, vars::getBoolean(name));
+			booleanNames = vars::remove(booleanNames, name);
 		}
 	}
 	else

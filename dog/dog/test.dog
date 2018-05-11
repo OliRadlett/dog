@@ -21,3 +21,6 @@ OUT inverse tan 1 =;
 TA_ 1;
 STR testStr Hello World!;
 NUM testNum 80;
+BOO testBoo false;
+TEST;
+NOTACOMMAND sjahdkjsahdkj;
