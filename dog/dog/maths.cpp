@@ -3,9 +3,7 @@
 
 #define PI 3.14159265358979323846264338327950288
 
-// It's all going wrong because of floating-point precision
 // 0.0000000000000000000000000000000000000000000000000000001 != 0
-// Same with test case
 maths::maths()
 {
 }
@@ -78,19 +76,19 @@ double maths::_tan(double number)
 	return result;
 }
 
-double maths::si_(double number)
+double maths::_isin(double number)
 {
 	double result = round(maths::RadToDeg(asin(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
-double maths::co_(double number)
+double maths::_icos(double number)
 {
 	double result = round(maths::RadToDeg(acos(number)) * 1000.0) / 1000.0;
 	return result;
 }
 
-double maths::ta_(double number)
+double maths::_itan(double number)
 {
 	double result = round(maths::RadToDeg(atan(number)) * 1000.0) / 1000.0;
 	return result;

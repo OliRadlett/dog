@@ -30,12 +30,12 @@ public:
 	static double _cos(std::string string);
 	static double _tan(double number);
 	static double _tan(std::string string);
-	static double si_(double number);
-	static double si_(std::string string);
-	static double co_(double number);
-	static double co_(std::string string);
-	static double ta_(double number);
-	static double ta_(std::string string);
+	static double _isin(double number);
+	static double _isin(std::string string);
+	static double _icos(double number);
+	static double _icos(std::string string);
+	static double _itan(double number);
+	static double _itan(std::string string);
 	static double DegToRad(double deg);
 	static double RadToDeg(double rad);
 	static double round(double number);

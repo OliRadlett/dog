@@ -49,15 +49,15 @@ interpreter::interpreter(std::string fileString)
 		{
 			interpreter::_tan(line);
 		}
-		else if (command == "SI_")
+		else if (command == "SINi")
 		{
 			interpreter::si_(line);
 		}
-		else if (command == "CO_")
+		else if (command == "COSi")
 		{
 			interpreter::co_(line);
 		}
-		else if (command == "TA_")
+		else if (command == "TANi")
 		{
 			interpreter::ta_(line);
 		}
@@ -150,24 +150,24 @@ void interpreter::_tan(std::string line)
 void interpreter::si_(std::string line)
 {
 	// The number following SI_ is used in the inverse sin function
-	std::string number = line.substr(4);
-	double result = maths::si_(std::stod(number));
+	std::string number = line.substr(5);
+	double result = maths::_isin(std::stod(number));
 	out::out(result);
 }
 
 void interpreter::co_(std::string line)
 {
 	// The number following CO_ is used in the inverse cos function
-	std::string number = line.substr(4);
-	double result = maths::co_(std::stod(number));
+	std::string number = line.substr(5);
+	double result = maths::_icos(std::stod(number));
 	out::out(result);
 }
 
 void interpreter::ta_(std::string line)
 {
 	// The number following TA_ is used in the inverse tan function
-	std::string number = line.substr(4);
-	double result = maths::ta_(std::stod(number));
+	std::string number = line.substr(5);
+	double result = maths::_itan(std::stod(number));
 	out::out(result);
 }
 
