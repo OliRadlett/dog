@@ -228,7 +228,7 @@ void interpreter::outv(std::string line, Parser parser)
 	}
 	else
 	{
-		std::cout << "Variable '" << varName << "' does not exist";
+		std::cout << "Variable '" << varName << "' does not exist" << std::endl;
 	}
 }
 

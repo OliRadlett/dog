@@ -19,12 +19,15 @@ OUT inverse cos 0 =;
 COSi 0;
 OUT inverse tan 1 =;
 TANi 1;
-//test
+//test comment
 STRING testString Hello World!;
 NUMBER testNumber 80;
 BOOLEAN testBoolean false;
 // Another test comment
 OUTV testString;
+OUTV testNumber;
+OUTV testBoolean;
+OUTV thisVariableDoesNotExist;
 TEST;
 NOTACOMMAND sjahdkjsahdkj;
-// Comment
+// Comment test

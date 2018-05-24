@@ -8,5 +8,6 @@ class out
 public:
 	out(std::string toOutput);
 	out(double toOutput);
+	out(bool toOutput);
 	~out();
 };

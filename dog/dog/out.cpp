@@ -11,6 +11,11 @@ out::out(double toOutput)
 	std::cout << toOutput << std::endl;
 }
 
+out::out(bool toOutput)
+{
+	std::cout << toOutput << std::endl;
+}
+
 out::~out()
 {
 }
