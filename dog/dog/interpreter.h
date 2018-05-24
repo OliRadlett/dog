@@ -23,10 +23,11 @@ private:
 	void _sin(std::string line);
 	void _cos(std::string line);
 	void _tan(std::string line);
-	void si_(std::string line);
-	void co_(std::string line);
-	void ta_(std::string line);
-	void str(std::string line, Parser parser);
-	void num(std::string line, Parser parser);
-	void boo(std::string line, Parser parser);
+	void _isin(std::string line);
+	void _icos(std::string line);
+	void _itan(std::string line);
+	void string(std::string line, Parser parser);
+	void number(std::string line, Parser parser);
+	void boolean(std::string line, Parser parser);
+	void outv(std::string line, Parser parser);
 };

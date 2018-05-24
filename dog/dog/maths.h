@@ -13,9 +13,6 @@ class maths
 public:
 	maths();
 	~maths();
-	// Aggghhhhhh!!!!
-	// FIX ALL THIS STATIC ACCESS!!!
-	// Also doubles might be an idea
 	static double add(std::vector<double> numbers);
 	static double add(std::vector<std::string> vars);
 	static double sub(std::vector<double> numbers);

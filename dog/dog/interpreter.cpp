@@ -13,11 +13,12 @@ interpreter::interpreter(std::string fileString)
 
 		std::string command = lineTokens[0];
 
-		if (command == "//")
+		/*if (command == "//")
 		{
 			// Skip line
+			continue;
 		}
-		else if (command == "OUT")
+		else */if (command == "OUT")
 		{
 			interpreter::out(line);
 		}
@@ -51,31 +52,35 @@ interpreter::interpreter(std::string fileString)
 		}
 		else if (command == "SINi")
 		{
-			interpreter::si_(line);
+			interpreter::_isin(line);
 		}
 		else if (command == "COSi")
 		{
-			interpreter::co_(line);
+			interpreter::_icos(line);
 		}
 		else if (command == "TANi")
 		{
-			interpreter::ta_(line);
+			interpreter::_itan(line);
 		}
-		else if (command == "STR")
+		else if (command == "STRING")
 		{
-			interpreter::str(line, parser);
+			interpreter::string(line, parser);
 		}
-		else if (command == "NUM")
+		else if (command == "NUMBER")
 		{
-			interpreter::num(line, parser);
+			interpreter::number(line, parser);
 		}
-		else if (command == "BOO")
+		else if (command == "BOOLEAN")
 		{
-			interpreter::boo(line, parser);
+			interpreter::boolean(line, parser);
 		}
 		else if (command == "TEST")
 		{
 			std::cout << "4 character operand test" << std::endl;
+		}
+		else if (command == "OUTV")
+		{
+			interpreter::outv(line, parser);
 		}
 		else
 		{
@@ -147,38 +152,38 @@ void interpreter::_tan(std::string line)
 	out::out(result);
 }
 
-void interpreter::si_(std::string line)
+void interpreter::_isin(std::string line)
 {
-	// The number following SI_ is used in the inverse sin function
+	// The number following SINi is used in the inverse sin function
 	std::string number = line.substr(5);
 	double result = maths::_isin(std::stod(number));
 	out::out(result);
 }
 
-void interpreter::co_(std::string line)
+void interpreter::_icos(std::string line)
 {
-	// The number following CO_ is used in the inverse cos function
+	// The number following COSi is used in the inverse cos function
 	std::string number = line.substr(5);
 	double result = maths::_icos(std::stod(number));
 	out::out(result);
 }
 
-void interpreter::ta_(std::string line)
+void interpreter::_itan(std::string line)
 {
-	// The number following TA_ is used in the inverse tan function
+	// The number following TANi is used in the inverse tan function
 	std::string number = line.substr(5);
 	double result = maths::_itan(std::stod(number));
 	out::out(result);
 }
 
-void interpreter::str(std::string line, Parser parser)
+void interpreter::string(std::string line, Parser parser)
 {
 	// Parse line into name and value
 	std::vector<std::string> parsedLine = parser.ParseInitString(line);
 	vars::InitString(parsedLine[0], parsedLine[1]);
 }
 
-void interpreter::num(std::string line, Parser parser)
+void interpreter::number(std::string line, Parser parser)
 {
 	// Parse line into name and value
 	std::vector<std::string> parsedLine = parser.ParseInitDouble(line);
@@ -186,7 +191,7 @@ void interpreter::num(std::string line, Parser parser)
 	vars::InitDouble(parsedLine[0], std::stod(parsedLine[1]));
 }
 
-void interpreter::boo(std::string line, Parser parser)
+void interpreter::boolean(std::string line, Parser parser)
 {
 	// Parse line into name and value
 	std::vector<std::string> parsedLine = parser.ParseInitBoolean(line);
@@ -194,6 +199,37 @@ void interpreter::boo(std::string line, Parser parser)
 	bool value;
 	std::istringstream(parsedLine[1]) >> value;
 	vars::InitBoolean(parsedLine[0], value);
+}
+
+void interpreter::outv(std::string line, Parser parser)
+{
+	// varName always follows OUTV
+	std::string varName = line.substr(5);
+	// Check if var exists
+	bool exists = vars::exists(varName);
+	if (exists)
+	{
+		std::string type = vars::getType(varName);
+		if (type == "STRING")
+		{
+			std::string varValue = vars::getString(varName);
+			out::out(varValue);
+		}
+		else if (type == "NUMBER")
+		{
+			double varValue = vars::getNumber(varName);
+			out::out(varValue);
+		}
+		else if (type == "BOOLEAN")
+		{
+			bool varValue = vars::getBoolean(varName);
+			out::out(varValue);
+		}
+	}
+	else
+	{
+		std::cout << "Variable '" << varName << "' does not exist";
+	}
 }
 
 interpreter::~interpreter()

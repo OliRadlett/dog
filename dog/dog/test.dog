@@ -19,9 +19,12 @@ OUT inverse cos 0 =;
 COSi 0;
 OUT inverse tan 1 =;
 TANi 1;
-STR testStr Hello World!;
-NUM testNum 80;
-BOO testBoo false;
+//test
+STRING testString Hello World!;
+NUMBER testNumber 80;
+BOOLEAN testBoolean false;
+// Another test comment
+OUTV testString;
 TEST;
 NOTACOMMAND sjahdkjsahdkj;
 // Comment

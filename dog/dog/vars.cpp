@@ -56,7 +56,7 @@ bool vars::exists(std::string name)
 	return false;
 }
 
-bool vars::findStr(std::string name)
+bool vars::findString(std::string name)
 {
 	if (std::find(stringNames.begin(), stringNames.end(), name) != stringNames.end())
 	{
@@ -68,7 +68,7 @@ bool vars::findStr(std::string name)
 	}
 }
 
-bool vars::findNum(std::string name)
+bool vars::findNumber(std::string name)
 {
 	if (std::find(doubleNames.begin(), doubleNames.end(), name) != doubleNames.end())
 	{
@@ -80,7 +80,7 @@ bool vars::findNum(std::string name)
 	}
 }
 
-bool vars::findBoo(std::string name)
+bool vars::findBoolean(std::string name)
 {
 	if (std::find(booleanNames.begin(), booleanNames.end(), name) != booleanNames.end())
 	{
@@ -114,7 +114,7 @@ std::string vars::getString(std::string name)
 {
 	if (exists(name))
 	{
-		if (findStr(name))
+		if (findString(name))
 		{
 			int pos = std::find(stringNames.begin(), stringNames.end(), name) - stringNames.begin();
 			return stringValues[pos];
@@ -126,7 +126,7 @@ double vars::getNumber(std::string name)
 {
 	if (exists(name))
 	{
-		if (findNum(name))
+		if (findNumber(name))
 		{
 			int pos = std::find(doubleNames.begin(), doubleNames.end(), name) - doubleNames.begin();
 			return doubleValues[pos];
@@ -138,7 +138,7 @@ bool vars::getBoolean(std::string name)
 {
 	if (exists(name))
 	{
-		if (findBoo(name))
+		if (findBoolean(name))
 		{
 			int pos = std::find(booleanNames.begin(), booleanNames.end(), name) - booleanNames.begin();
 			return booleanValues[pos];
@@ -151,17 +151,17 @@ void vars::deleteVar(std::string name)
 	if (exists(name))
 	{
 
-		if (findStr(name))
+		if (findString(name))
 		{
 			stringValues = vars::remove(stringValues, vars::getString(name));
 			stringNames = vars::remove(stringNames, name);
 		}
-		else if (findNum(name))
+		else if (findNumber(name))
 		{
 			doubleValues = vars::remove(doubleValues, vars::getNumber(name));
 			doubleNames = vars::remove(doubleNames, name);
 		}
-		else if (findBoo(name))
+		else if (findBoolean(name))
 		{
 			booleanValues = vars::remove(booleanValues, vars::getBoolean(name));
 			booleanNames = vars::remove(booleanNames, name);
@@ -170,5 +170,21 @@ void vars::deleteVar(std::string name)
 	else
 	{
 		std::cout << "Error variable '" << name << "'does not exit" << std::endl;
+	}
+}
+
+std::string vars::getType(std::string name)
+{
+	if (vars::findString(name))
+	{
+		return "STRING";
+	}
+	else if (vars::findNumber(name))
+	{
+		return "NUMBER";
+	}
+	else if (vars::findBoolean(name))
+	{
+		return "BOOLEAN";
 	}
 }

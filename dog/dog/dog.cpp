@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <fstream>
 #include <string>
+#include <iostream>
 #include <sys\stat.h>
 #include "Parser.h"
 #include "interpreter.h"
@@ -25,9 +26,18 @@ int main(int argc, char* argv[])
 		{
 			std::string fileName(argv[1]);
 			std::ifstream t(fileName);
-			std::stringstream buffer;
+			std::string line;
+			while (!t.eof())
+			{
+				getline(t, line);
+				if (!line.length() == 0 && line.substr(0, 2) != "//")
+				{
+					lines.append(line);
+				}
+			}
+			/*std::stringstream buffer;
 			buffer << t.rdbuf();
-			lines = buffer.str();
+			lines = buffer.str();*/
 		}
 		else
 		{
