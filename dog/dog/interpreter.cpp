@@ -1,4 +1,5 @@
 #include "interpreter.h"
+#include "DebugFunctions.h"
 
 
 interpreter::interpreter(std::string fileString)
@@ -13,14 +14,9 @@ interpreter::interpreter(std::string fileString)
 
 		std::string command = lineTokens[0];
 
-		/*if (command == "//")
+		if (command == "OUT")
 		{
-			// Skip line
-			continue;
-		}
-		else */if (command == "OUT")
-		{
-			interpreter::out(line);
+			interpreter::out(line, parser);
 		}
 		else if (command == "ADD")
 		{
@@ -89,11 +85,27 @@ interpreter::interpreter(std::string fileString)
 	}
 }
 
-void interpreter::out(std::string line)
+void interpreter::out(std::string line, Parser parser)
 {
 	// Anything following the OUT command is outputted
-	std::string toOutput = line.substr(4);
-	out::out(toOutput);
+	std::vector<std::string> parsedLine = parser.Split(line, "'", false);
+	if (parsedLine.empty())
+	{
+		// Probably variable
+		outv(line, parser);
+	}
+	else
+	{
+		// Probably raw string
+		size_t firstQuote = line.find_first_of("'");
+		size_t lastQuote = line.find_last_of("'");
+		int lengthOfSubstr = lastQuote - firstQuote;
+		std::string rawStr = line.substr(firstQuote, lengthOfSubstr);
+		out::out(rawStr);
+
+	}
+	//std::string toOutput = line.substr(4);
+	//out::out(toOutput);
 }
 
 void interpreter::add(std::string line, Parser parser)

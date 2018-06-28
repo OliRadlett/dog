@@ -15,7 +15,7 @@ public:
 	interpreter(std::string fileString);
 	~interpreter();
 private:
-	void out(std::string line);
+	void out(std::string line, Parser parser);
 	void add(std::string line, Parser parser);
 	void sub(std::string line, Parser parser);
 	void mul(std::string line, Parser parser);
