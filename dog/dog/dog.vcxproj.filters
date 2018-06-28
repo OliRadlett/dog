@@ -45,6 +45,9 @@
     <ClInclude Include="vars.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="man.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="man.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

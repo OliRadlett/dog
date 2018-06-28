@@ -78,6 +78,10 @@ interpreter::interpreter(std::string fileString)
 		{
 			interpreter::outv(line, parser);
 		}
+		else if (command == "MAN")
+		{
+			interpreter::man(line);
+		}
 		else
 		{
 			std::cout << "'" << command << "' is not a recognised command" << std::endl;
@@ -259,6 +263,13 @@ void interpreter::outv(std::string line, Parser parser)
 	{
 		std::cout << "Variable '" << varName << "' does not exist" << std::endl;
 	}
+}
+
+void interpreter::man(std::string line)
+{
+	// Anything after MAN is the command
+	std::string command = line.substr(4);
+	man::man(command);
 }
 
 interpreter::~interpreter()

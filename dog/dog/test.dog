@@ -31,3 +31,4 @@ OUT thisVariableDoesNotExist;
 TEST;
 NOTACOMMAND sjahdkjsahdkj;
 // Comment test
+MAN OUT;

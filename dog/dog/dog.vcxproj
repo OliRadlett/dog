@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClInclude Include="DebugFunctions.h" />
     <ClInclude Include="interpreter.h" />
+    <ClInclude Include="man.h" />
     <ClInclude Include="maths.h" />
     <ClInclude Include="out.h" />
     <ClInclude Include="Parser.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="DebugFunctions.cpp" />
     <ClCompile Include="dog.cpp" />
     <ClCompile Include="interpreter.cpp" />
+    <ClCompile Include="man.cpp" />
     <ClCompile Include="maths.cpp" />
     <ClCompile Include="out.cpp" />
     <ClCompile Include="Parser.cpp" />

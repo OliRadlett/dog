@@ -8,6 +8,7 @@
 #include "maths.h"
 #include "vars.h"
 #include "set.h"
+#include "man.h"
 
 class interpreter
 {
@@ -30,4 +31,5 @@ private:
 	void number(std::string line, Parser parser);
 	void boolean(std::string line, Parser parser);
 	void outv(std::string line, Parser parser);
+	void man(std::string line);
 };
