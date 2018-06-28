@@ -97,7 +97,7 @@ void interpreter::out(std::string line, Parser parser)
 	else
 	{
 		// Probably raw string
-		size_t firstQuote = line.find_first_of("'");
+		size_t firstQuote = line.find_first_of("'") + 1;
 		size_t lastQuote = line.find_last_of("'");
 		int lengthOfSubstr = lastQuote - firstQuote;
 		std::string rawStr = line.substr(firstQuote, lengthOfSubstr);
@@ -207,16 +207,23 @@ void interpreter::boolean(std::string line, Parser parser)
 {
 	// Parse line into name and value
 	std::vector<std::string> parsedLine = parser.ParseInitBoolean(line);
-	// Str to bool to Str to bool doesn't seem to good...
 	bool value;
-	std::istringstream(parsedLine[1]) >> value;
+	// Not elegant but idk
+	if (parsedLine[1] == "true")
+	{
+		value = true;
+	}
+	else if (parsedLine[1] == "false")
+	{
+		value = false;
+	}
 	vars::InitBoolean(parsedLine[0], value);
 }
 
 void interpreter::outv(std::string line, Parser parser)
 {
 	// varName always follows OUTV
-	std::string varName = line.substr(5);
+	std::string varName = line.substr(4);
 	// Check if var exists
 	bool exists = vars::exists(varName);
 	if (exists)
@@ -234,8 +241,18 @@ void interpreter::outv(std::string line, Parser parser)
 		}
 		else if (type == "BOOLEAN")
 		{
-			bool varValue = vars::getBoolean(varName);
-			out::out(varValue);
+			int varValue = vars::getBoolean(varName);
+			// There's probably a nicer way of doing this but we need to get a String representation of the bool instead of 0-1
+			switch (varValue)
+			{
+			// Not sure why out::out doesnt work but std::cout seems to :thinking:
+			case 0:
+				std::cout << "false" << std::endl;
+				break;
+			case 1:
+				std::cout << "true" << std::endl;
+				break;
+			}
 		}
 	}
 	else

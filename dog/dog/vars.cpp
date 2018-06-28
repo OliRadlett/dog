@@ -141,7 +141,9 @@ bool vars::getBoolean(std::string name)
 		if (findBoolean(name))
 		{
 			int pos = std::find(booleanNames.begin(), booleanNames.end(), name) - booleanNames.begin();
-			return booleanValues[pos];
+			// For debugging
+			bool value = booleanValues[pos];
+			return value;
 		}
 	}
 }
