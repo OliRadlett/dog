@@ -122,6 +122,7 @@ void interpreter::add(std::string line, Parser parser)
 	std::cout << "Parsed " << line << " into: " << std::endl;
 	DebugFunctions dbf;
 	dbf.OutputVector(parsedLine);
+	parsedLine.erase(parsedLine.begin());
 	for (std::string operand : parsedLine)
 	{
 		if (operand.find_first_not_of("0123456789") == std::string::npos)
@@ -172,25 +173,175 @@ void interpreter::add(std::string line, Parser parser)
 void interpreter::sub(std::string line, Parser parser)
 {
 	// Anything after SUB is to be subtracted
-	std::string numbers = line.substr(4);
-	double result = maths::sub(parser.parseDoubles(numbers));
-	out::out(result);
+	//std::string numbers = line.substr(4);
+	std::string numbers;
+	bool containsError = false;
+	std::vector<std::string> parsedLine = parser.Split(line, " ", true);
+	std::cout << "Parsed " << line << " into: " << std::endl;
+	DebugFunctions dbf;
+	dbf.OutputVector(parsedLine);
+	parsedLine.erase(parsedLine.begin());
+	for (std::string operand : parsedLine)
+	{
+		if (operand.find_first_not_of("0123456789") == std::string::npos)
+		{
+			// Parse as value
+			numbers += " " + operand;
+			std::cout << "Interpreted " << operand << " as a value" << std::endl;
+		}
+		else
+		{
+			// Parse as variable name
+			if (vars::exists(operand))
+			{
+				// If the variable exists...
+				if (vars::getType(operand) == "NUMBER")
+				{
+					// If the variable is the correct type get the value stored in it
+					int value = vars::getNumber(operand);
+					// Then apprend the value to the string for parsing
+					numbers += " " + std::to_string(value);
+					std::cout << "Interpreted " << operand << " as a variable name and read value as " << value << std::endl;
+				}
+				else
+				{
+					// Variable is an incorrect type
+					containsError = true;
+					std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(operand) << std::endl;
+				}
+			}
+			else
+			{
+				// Variable does not exist
+				containsError = true;
+				std::cout << "Error, variable: " << operand << " does not exist" << std::endl;
+			}
+		}
+	}
+	if (!containsError)
+	{
+		// Strip leading whitespace
+		numbers = numbers.substr(1, numbers.length());
+		std::cout << "Parsed numbers now equals: " << numbers << std::endl;
+		double result = maths::sub(parser.parseDoubles(numbers));
+		out::out(result);
+	}
 }
 
 void interpreter::mul(std::string line, Parser parser)
 {
-	// Anything after MUL is to be multipled
-	std::string numbers = line.substr(4);
-	double result = maths::mul(parser.parseDoubles(numbers));
-	out::out(result);
+	// Anything after MUL is to be multiplied
+	//std::string numbers = line.substr(4);
+	std::string numbers;
+	bool containsError = false;
+	std::vector<std::string> parsedLine = parser.Split(line, " ", true);
+	std::cout << "Parsed " << line << " into: " << std::endl;
+	DebugFunctions dbf;
+	dbf.OutputVector(parsedLine);
+	parsedLine.erase(parsedLine.begin());
+	for (std::string operand : parsedLine)
+	{
+		if (operand.find_first_not_of("0123456789") == std::string::npos)
+		{
+			// Parse as value
+			numbers += " " + operand;
+			std::cout << "Interpreted " << operand << " as a value" << std::endl;
+		}
+		else
+		{
+			// Parse as variable name
+			if (vars::exists(operand))
+			{
+				// If the variable exists...
+				if (vars::getType(operand) == "NUMBER")
+				{
+					// If the variable is the correct type get the value stored in it
+					int value = vars::getNumber(operand);
+					// Then apprend the value to the string for parsing
+					numbers += " " + std::to_string(value);
+					std::cout << "Interpreted " << operand << " as a variable name and read value as " << value << std::endl;
+				}
+				else
+				{
+					// Variable is an incorrect type
+					containsError = true;
+					std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(operand) << std::endl;
+				}
+			}
+			else
+			{
+				// Variable does not exist
+				containsError = true;
+				std::cout << "Error, variable: " << operand << " does not exist" << std::endl;
+			}
+		}
+	}
+	if (!containsError)
+	{
+		// Strip leading whitespace
+		numbers = numbers.substr(1, numbers.length());
+		std::cout << "Parsed numbers now equals: " << numbers << std::endl;
+		double result = maths::mul(parser.parseDoubles(numbers));
+		out::out(result);
+	}
 }
 
 void interpreter::div(std::string line, Parser parser)
 {
 	// Anything after DIV is to be divided
-	std::string numbers = line.substr(4);
-	double result = maths::div(parser.parseDoubles(numbers));
-	out::out(result);
+	//std::string numbers = line.substr(4);
+	std::string numbers;
+	bool containsError = false;
+	std::vector<std::string> parsedLine = parser.Split(line, " ", true);
+	std::cout << "Parsed " << line << " into: " << std::endl;
+	DebugFunctions dbf;
+	dbf.OutputVector(parsedLine);
+	parsedLine.erase(parsedLine.begin());
+	for (std::string operand : parsedLine)
+	{
+		if (operand.find_first_not_of("0123456789") == std::string::npos)
+		{
+			// Parse as value
+			numbers += " " + operand;
+			std::cout << "Interpreted " << operand << " as a value" << std::endl;
+		}
+		else
+		{
+			// Parse as variable name
+			if (vars::exists(operand))
+			{
+				// If the variable exists...
+				if (vars::getType(operand) == "NUMBER")
+				{
+					// If the variable is the correct type get the value stored in it
+					int value = vars::getNumber(operand);
+					// Then apprend the value to the string for parsing
+					numbers += " " + std::to_string(value);
+					std::cout << "Interpreted " << operand << " as a variable name and read value as " << value << std::endl;
+				}
+				else
+				{
+					// Variable is an incorrect type
+					containsError = true;
+					std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(operand) << std::endl;
+				}
+			}
+			else
+			{
+				// Variable does not exist
+				containsError = true;
+				std::cout << "Error, variable: " << operand << " does not exist" << std::endl;
+			}
+		}
+	}
+	if (!containsError)
+	{
+		// Strip leading whitespace
+		numbers = numbers.substr(1, numbers.length());
+		std::cout << "Parsed numbers now equals: " << numbers << std::endl;
+		double result = maths::div(parser.parseDoubles(numbers));
+		out::out(result);
+	}
 }
 
 void interpreter::_sin(std::string line)
