@@ -29,6 +29,10 @@ OUT testNumber;
 OUT testBoolean;
 OUT thisVariableDoesNotExist;
 TEST;
-NOTACOMMAND sjahdkjsahdkj;
+NOTACOMMAND thisIsNotACommand;
 // Comment test
 MAN OUT;
+NUMBER addTestOne 1;
+NUMBER addTestTwo 2;
+OUT 'Adding two variables and a raw number';
+ADD addTestOne addTestTwo 3;

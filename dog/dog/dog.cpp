@@ -9,8 +9,10 @@
 #include "Parser.h"
 #include "interpreter.h"
 
-// FileExists method from -
-// https://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-c
+/* 
+FileExists method from :
+https://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-c
+*/
 inline bool FileExists(const std::string& name)
 {
 	struct stat buffer;
