@@ -1,7 +1,6 @@
 #include "interpreter.h"
 #include "DebugFunctions.h"
 
-
 interpreter::interpreter(std::string fileString)
 {
 	Parser parser;
@@ -348,48 +347,216 @@ void interpreter::_sin(std::string line)
 {
 	// The number following SIN is used in the sin function
 	std::string number = line.substr(4);
-	double result = maths::_sin(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_sin(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::_cos(std::string line)
 {
 	// The number following COS is used in the cos function
 	std::string number = line.substr(4);
-	double result = maths::_cos(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_cos(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::_tan(std::string line)
 {
 	// The number following TAN is used in the tan function
 	std::string number = line.substr(4);
-	double result = maths::_tan(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_tan(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::_isin(std::string line)
 {
 	// The number following SINi is used in the inverse sin function
 	std::string number = line.substr(5);
-	double result = maths::_isin(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_isin(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::_icos(std::string line)
 {
 	// The number following COSi is used in the inverse cos function
 	std::string number = line.substr(5);
-	double result = maths::_icos(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_icos(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::_itan(std::string line)
 {
 	// The number following TANi is used in the inverse tan function
 	std::string number = line.substr(5);
-	double result = maths::_itan(std::stod(number));
-	out::out(result);
+	bool containsError = false;
+	if (number.find_first_not_of("0123456789") != std::string::npos)
+	{
+		// Probably a variable
+		if (vars::exists(number))
+		{
+			if (vars::getType(number) == "NUMBER")
+			{
+				// Replace var name with var value
+				number = std::to_string(vars::getNumber(number));
+			}
+			else
+			{
+				// Variable is an incorrect type
+				containsError = true;
+				std::cout << "Error, expected type NUMBER but recieved type: " << vars::getType(number) << std::endl;
+			}
+		}
+		else
+		{
+			// Variable does not exist
+			containsError = true;
+			std::cout << "Error, variable: " << number << " does not exist" << std::endl;
+		}
+	}
+	if (!containsError)
+	{
+		double result = maths::_itan(std::stod(number));
+		out::out(result);
+	}
 }
 
 void interpreter::string(std::string line, Parser parser)
