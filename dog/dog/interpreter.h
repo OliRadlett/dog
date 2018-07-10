@@ -17,7 +17,7 @@ public:
 	interpreter(std::string fileString);
 	~interpreter();
 private:
-	void out(std::string line, Parser parser);
+	void out(std::string line, Parser parser, bool conditional);
 	void add(std::string line, Parser parser);
 	void sub(std::string line, Parser parser);
 	void mul(std::string line, Parser parser);
@@ -33,5 +33,6 @@ private:
 	void boolean(std::string line, Parser parser);
 	void outv(std::string line, Parser parser);
 	void man(std::string line);
-
+	bool containsConditional(std::string line);
+	bool conditionalEvaluates(std::vector<std::string> conditional);
 };

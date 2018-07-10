@@ -19,4 +19,5 @@ public:
 	std::vector<std::string> ParseInitString(std::string line);
 	std::vector<std::string> ParseInitDouble(std::string line);
 	std::vector<std::string> ParseInitBoolean(std::string line);
+	std::vector<std::string> parseConditional(std::string line);
 };

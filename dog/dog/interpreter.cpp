@@ -15,7 +15,7 @@ interpreter::interpreter(std::string fileString)
 
 		if (command == "OUT")
 		{
-			interpreter::out(line, parser);
+			interpreter::out(line, parser, containsConditional(line));
 		}
 		else if (command == "ADD")
 		{
@@ -88,24 +88,45 @@ interpreter::interpreter(std::string fileString)
 	}
 }
 
-void interpreter::out(std::string line, Parser parser)
+void interpreter::out(std::string line, Parser parser, bool conditional)
 {
 	// Anything following the OUT command is outputted
 	std::vector<std::string> parsedLine = parser.Split(line, "'", false);
 	if (parsedLine.empty())
 	{
 		// Probably variable
-		outv(line, parser);
+		if (conditional)
+		{
+			std::vector<std::string> conditional = parser.parseConditional(line);
+		}
+		else
+		{
+			outv(line, parser);
+		}
 	}
 	else
 	{
 		// Probably raw string
-		size_t firstQuote = line.find_first_of("'") + 1;
-		size_t lastQuote = line.find_last_of("'");
-		int lengthOfSubstr = lastQuote - firstQuote;
-		std::string rawStr = line.substr(firstQuote, lengthOfSubstr);
-		out::out(rawStr);
-
+		if (conditional)
+		{
+			std::vector<std::string> conditional = parser.parseConditional(line);
+			if (conditionalEvaluates(conditional))
+			{
+				size_t firstQuote = line.find_first_of("'") + 1;
+				size_t lastQuote = line.find_last_of("'");
+				int lengthOfSubstr = lastQuote - firstQuote;
+				std::string rawStr = line.substr(firstQuote, lengthOfSubstr);
+				out::out(rawStr);
+			}
+		}
+		else
+		{
+			size_t firstQuote = line.find_first_of("'") + 1;
+			size_t lastQuote = line.find_last_of("'");
+			int lengthOfSubstr = lastQuote - firstQuote;
+			std::string rawStr = line.substr(firstQuote, lengthOfSubstr);
+			out::out(rawStr);
+		}
 	}
 	//std::string toOutput = line.substr(4);
 	//out::out(toOutput);
@@ -637,6 +658,163 @@ void interpreter::man(std::string line)
 	// Anything after MAN is the command
 	std::string command = line.substr(4);
 	man::man(command);
+}
+
+bool interpreter::containsConditional(std::string line)
+{
+	size_t openBracket = line.find_first_of("(");
+	size_t closeBracket = line.find_last_of(")");
+
+	if (openBracket != std::string::npos && closeBracket != std::string::npos)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
+{
+	// BLOODY HELL THIS IS MESSY
+	/*
+	conditional[0] -> type
+	conditional[1] -> value1
+	conditional[2] -> logical operator
+	conditional[3] -> value2
+	*/
+	bool value1Var = false;
+	bool value2Var = false;
+	if (conditional[0] == "IF")
+	{
+		if (conditional[1].find_first_not_of("0123456789") != std::string::npos)
+		{
+			// Variable
+			value1Var = true;
+		}
+		if (conditional[3].find_first_not_of("0123456789") != std::string::npos)
+		{
+			// Variable
+			value2Var = true;
+		}
+		if (value1Var || value2Var)
+		{
+			if (value1Var && !value2Var)
+			{
+				if (vars::exists(conditional[1]))
+				{
+					if (vars::getType(conditional[1]) == "NUMBER")
+					{
+						if (conditional[2] == "==")
+						{
+							if (vars::getNumber(conditional[1]) == std::stod(conditional[3]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else if (value2Var && !value1Var)
+			{
+				if (vars::exists(conditional[3]))
+				{
+					if (vars::getType(conditional[3]) == "NUMBER")
+					{
+						if (conditional[2] == "==")
+						{
+							if (vars::getNumber(conditional[3]) == std::stod(conditional[1]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else if (value1Var && value2Var)
+			{
+				if (vars::exists(conditional[1]) && vars::exists(conditional[3]))
+				{
+					if (vars::getType(conditional[1]) == "NUMBER" && vars::getType(conditional[3]) == "NUMBER")
+					{
+						if (conditional[2] == "==")
+						{
+							if (vars::getNumber(conditional[1]) == vars::getNumber(conditional[3]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		else
+		{
+			if (conditional[2] == "==")
+			{
+				if (std::stod(conditional[1]) == std::stod(conditional[3]))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
+		}
+	}
 }
 
 interpreter::~interpreter()

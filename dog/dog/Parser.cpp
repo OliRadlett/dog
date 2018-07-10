@@ -125,6 +125,17 @@ std::vector<std::string> Parser::ParseInitBoolean(std::string line)
 	return parsedStr;
 }
 
+std::vector<std::string> Parser::parseConditional(std::string line)
+{
+	size_t start = line.find_first_of("(") + 1;
+	size_t end = line.find_last_of(")");
+	int length = end - start;
+	std::string conditional = line.substr(start, length);
+	std::vector<std::string> parsedConditional = Parser::Split(conditional, " ", true);
+	return parsedConditional;
+
+}
+
 Parser::~Parser()
 {
 }
