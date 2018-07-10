@@ -1,3 +1,3 @@
-NUMBER testOne 1;
-NUMBER testTwo 1;
-OUT 'Test' (IF testOne == testTwo);
+IN 'Enter the number 1' > NUMBER number;
+OUT 'You entered a 1' (IF number == 1);
+OUT 'I told you to enter a 1...' (IF number != 1);

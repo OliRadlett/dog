@@ -81,6 +81,10 @@ interpreter::interpreter(std::string fileString)
 		{
 			interpreter::man(line);
 		}
+		else if (command == "IN")
+		{
+			interpreter::in(line, parser);
+		}
 		else
 		{
 			std::cout << "'" << command << "' is not a recognised command" << std::endl;
@@ -660,6 +664,44 @@ void interpreter::man(std::string line)
 	man::man(command);
 }
 
+void interpreter::in(std::string line, Parser parser)
+{
+	//std::vector<std::string> parsedLine = parser.Split(line, " ", true);
+	size_t varNameStart = line.find_first_of(">") + 2;
+	std::string prompt = line.substr(4, varNameStart - 8);
+	std::vector<std::string> varInfo = parser.Split(line.substr(varNameStart), " ", true);
+	std::string varType = varInfo[0];
+	std::string varName = varInfo[1];
+	std::string input;
+	std::cout << prompt << std::endl;
+	std::cin >> input;
+	if (varType == "STRING")
+	{
+		vars::InitString(varName, input);
+	}
+	else if (varType == "NUMBER")
+	{
+		// Note this allows users to input just a - or a . as a number
+		// Please don't
+		if (input.find_first_not_of("0123456789.-") == std::string::npos)
+		{
+			vars::InitDouble(varName, std::stod(input));
+		}
+	}
+	else if (varType == "BOOLEAN")
+	{
+		if (input == "true")
+		{
+			vars::InitBoolean(varName, true);
+		}
+		else if (input == "false")
+		{
+			vars::InitBoolean(varName, false);
+		}
+	}
+
+}
+
 bool interpreter::containsConditional(std::string line)
 {
 	size_t openBracket = line.find_first_of("(");
@@ -677,7 +719,7 @@ bool interpreter::containsConditional(std::string line)
 
 bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
 {
-	// BLOODY HELL THIS IS MESSY
+	// BLOODY HELL THIS IS MESSY AND HORRIBLE
 	/*
 	conditional[0] -> type
 	conditional[1] -> value1
@@ -709,6 +751,17 @@ bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
 						if (conditional[2] == "==")
 						{
 							if (vars::getNumber(conditional[1]) == std::stod(conditional[3]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else if (conditional[2] == "!=")
+						{
+							if (vars::getNumber(conditional[1]) != std::stod(conditional[3]))
 							{
 								return true;
 							}
@@ -749,6 +802,17 @@ bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
 								return false;
 							}
 						}
+						else if (conditional[2] == "!=")
+						{
+							if (vars::getNumber(conditional[3]) != std::stod(conditional[1]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
 						else
 						{
 							return false;
@@ -773,6 +837,17 @@ bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
 						if (conditional[2] == "==")
 						{
 							if (vars::getNumber(conditional[1]) == vars::getNumber(conditional[3]))
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else if (conditional[2] == "!=")
+						{
+							if (vars::getNumber(conditional[1]) != vars::getNumber(conditional[3]))
 							{
 								return true;
 							}
@@ -810,7 +885,19 @@ bool interpreter::conditionalEvaluates(std::vector<std::string> conditional)
 					return false;
 				}
 			}
-			else {
+			else if (conditional[2] == "!=")
+			{
+				if (std::stod(conditional[1]) != std::stod(conditional[3]))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
 				return false;
 			}
 		}

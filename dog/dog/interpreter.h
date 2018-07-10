@@ -33,6 +33,7 @@ private:
 	void boolean(std::string line, Parser parser);
 	void outv(std::string line, Parser parser);
 	void man(std::string line);
+	void in(std::string line, Parser parser);
 	bool containsConditional(std::string line);
 	bool conditionalEvaluates(std::vector<std::string> conditional);
 };
